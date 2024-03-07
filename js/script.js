@@ -18,7 +18,7 @@ let rate;
 
 do {
   numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
-} while (numberOfFilms === "" || numberOfFilms === null);
+} while (!numberOfFilms);
 
 let personalMovieDB = {
   count: numberOfFilms,
@@ -37,22 +37,17 @@ if (personalMovieDB.count < 10) {
   alert("Произошла ошибка");
 }
 
-do {
-  film = prompt("Один из последних просмотренных фильмов?");
-  rate = +prompt("На сколько оцените его?");
-} while (
-  film === "" ||
-  film === null ||
-  film.length > 50 ||
-  rate === "" ||
-  rate === 0
-);
-personalMovieDB.movies[`"${film}"`] = `${rate}`;
+for (let i = 0; i < 2; i++) {
+  do {
+    film = prompt("Один из последних просмотренных фильмов?");
+    rate = +prompt("На сколько оцените его?");
+  } while (!film || film.length > 50 || !rate);
+  personalMovieDB.movies[film] = rate;
+}
 console.log(personalMovieDB);
 
-// Второй вариант
-
-// for (; numberOfFilms == null || numberOfFilms == ""; ) {
+//Второй вариант
+// while (!numberOfFilms) {
 //   numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
 // }
 
@@ -62,7 +57,6 @@ console.log(personalMovieDB);
 //   actors: [],
 //   genres: false,
 // };
-
 // if (personalMovieDB.count < 10) {
 //   alert("Просмотрено довольно мало фильмов");
 // } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
@@ -73,20 +67,20 @@ console.log(personalMovieDB);
 //   alert("Произошла ошибка");
 // }
 
-// for (
-//   ;
-//   film === "" || film === null || film.length > 50 || rate === "" || rate === 0;
-
-// ) {
+// for (let i = 0; i < 2; i++) {
 //   film = prompt("Один из последних просмотренных фильмов?");
 //   rate = +prompt("На сколько оцените его?");
+//   if (!film || film.length > 50 || !rate) {
+//     continue;
+//   }
+//   personalMovieDB.movies[film] = rate;
 // }
-// personalMovieDB.movies[`"${film}"`] = `${rate}`;
+
 // console.log(personalMovieDB);
 
 //Третий вариант
 
-// while (numberOfFilms == null || numberOfFilms == "") {
+// while (!numberOfFilms) {
 //   numberOfFilms = +prompt("Сколько фильмов вы уже посмотрели?");
 // }
 
@@ -107,9 +101,15 @@ console.log(personalMovieDB);
 //   alert("Произошла ошибка");
 // }
 
-// while (film === "" || film === null || film.length > 50 || rate === "" || rate === 0) {
+// let i = 0;
+// while (i < 2) {
 //   film = prompt("Один из последних просмотренных фильмов?");
 //   rate = +prompt("На сколько оцените его?");
+//   if (!film || film.length > 50 || !rate) {
+//     continue;
+//   }
+//   i++;
+//   personalMovieDB.movies[film] = rate;
 // }
-// personalMovieDB.movies[`"${film}"`] = `${rate}`;
+
 // console.log(personalMovieDB);
